@@ -3,11 +3,11 @@ package com.gksegura.workshopmongo.services;
 import java.util.List;
 import java.util.Optional;
 
-import com.gksegura.workshopmongo.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gksegura.workshopmongo.domain.User;
+import com.gksegura.workshopmongo.dto.UserDTO;
 import com.gksegura.workshopmongo.repositories.UserRepository;
 import com.gksegura.workshopmongo.services.exception.ObjectNotFoundException;
 
@@ -28,6 +28,11 @@ public class UserService {
 
     public User insert(User obj) {
         return repo.insert(obj);
+    }
+
+    public void delete(String id) {
+        findById(id);
+        repo.deleteById(id);
     }
 
     public User fromDTO(UserDTO objDto) {
